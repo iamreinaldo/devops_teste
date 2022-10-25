@@ -60,14 +60,11 @@ jobs:
       - name: Configure Docker
         run: gcloud auth configure-docker --quiet
         
-      - name: Build Docker Image
-        working-directory: ./app      
+      - name: Build Docker Image    
         run: docker build -t $IMAGE_NAME .
         
-      - name: Push Docker Image
-        working-directory: ./app        
+      - name: Push Docker Image    
         run: docker push $IMAGE_NAME
       
-      - name: Deploy Docker Image
-        working-directory: ./app      
+      - name: Deploy Docker Image 
         run: gcloud run deploy site --image $IMAGE_NAME --region us-central1 --memory 128Mi --min-instances 0 --max-instances 1 --platform managed --port 8006 --allow-unauthenticated
