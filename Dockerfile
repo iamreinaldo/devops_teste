@@ -1,7 +1,7 @@
 FROM golang:1.18
 
 RUN mkdir /app
-ADD . /app
+ADD ./app /app
 WORKDIR /app
 
 RUN go mod tidy
